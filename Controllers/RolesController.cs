@@ -41,5 +41,17 @@ namespace IdentityApp.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            if(role != null)
+            {
+                return View(role);
+            }
+
+            return RedirectToAction("Index");
+        }
+        
     }
 }
